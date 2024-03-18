@@ -21,8 +21,15 @@ public class ShoppingCart {
         // composição
         // adiciona no vetor
         this.carItens.add(new CarItem(id, quantity, product));
+        calculateTotalPrice();
     }
-
+    public void calculateTotalPrice(){
+        this.totalPrice = 0;
+        for(CarItem obj: carItens){
+            // obj representa cada item no carrinho
+            this.totalPrice += obj.getQuantity() * obj.getProduct().getPrice();
+        }
+    }
     public void setId(int id) {
         this.id = id;
     }
