@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NetflixApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(NetflixApplication.class, args);
 	}
 
