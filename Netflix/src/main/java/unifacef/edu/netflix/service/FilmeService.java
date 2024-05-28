@@ -8,6 +8,8 @@ import unifacef.edu.netflix.model.repository.FilmeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FilmeService {
 
@@ -53,13 +55,30 @@ public class FilmeService {
         return listaDTO;
     }
     // método para recuperar um filme em específico
-    public FilmeDTO consulta(Long id){
+    public FilmeDTO consultaPorId(Long id){
         // retorna um filme
-        return null;
+        Optional<FilmeEntity> optional = injecao.findById(id);
+        if (optional.isPresent()) { // tem um filme com este id
+            return converteEntity(optional.get());
+        }
+        return null; // filme não encontrado
     }
     // método para remover um filme
     public String remove(Long id){
         // retorna se removeu ou não
-        return null;
+        if (injecao.existsById(id)){ // verifica se o filme existe
+            injecao.deleteById(id);
+            return "Remoção realizada com sucesso";
+        }
+        return "Nenhum filme foi removido";
+    }
+    public List<FilmeDTO> aumentaNotas(){
+        List<FilmeEntity> filmes = injecao.findAll();
+        for(FilmeEntity filme: filmes){
+            filme.setNota(filme.getNota() + 0.50f); // altera a nota
+        }
+        // salva no banco o vetor alterado
+        List<FilmeEntity> filmesEntity = injecao.saveAll(filmes);
+        return converteEntities(filmesEntity); // converte para DTO e retorna
     }
 }

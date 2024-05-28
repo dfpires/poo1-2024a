@@ -27,4 +27,19 @@ public class FilmeController {
 
         return injecao.consultaTodos();
     }
+
+    @GetMapping("/{id}")
+    public FilmeDTO consultaPorId(@PathVariable Long id){
+        return injecao.consultaPorId(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String remove(@PathVariable Long id){
+        return injecao.remove(id);
+    }
+
+    @PutMapping
+    public List<FilmeDTO> aumentaNota(){
+        return injecao.aumentaNotas();
+    }
 }
