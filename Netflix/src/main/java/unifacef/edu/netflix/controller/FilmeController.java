@@ -42,4 +42,9 @@ public class FilmeController {
     public List<FilmeDTO> aumentaNota(){
         return injecao.aumentaNotas();
     }
+
+    @PatchMapping("/{id}")
+    public FilmeDTO atualizaPorId(@PathVariable Long id, @RequestBody FilmeDTO filme){
+        return injecao.atualizaPorId(id, filme);
+    }
 }

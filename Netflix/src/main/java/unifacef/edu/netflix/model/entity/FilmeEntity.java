@@ -14,16 +14,11 @@ public class FilmeEntity {
     private float nota;
     @Column(name="anoLancamento")
     private int anoLancamento;
+    @ManyToOne (fetch = FetchType.LAZY) // relação preguiçosa
+    @JoinColumn(name="diretor_id")
+    private DiretorEntity diretor;
 
-    public FilmeEntity() {
-    }
 
-    public FilmeEntity(Long id, String nome, float nota, int anoLancamento) {
-        this.id = id;
-        this.nome = nome;
-        this.nota = nota;
-        this.anoLancamento = anoLancamento;
-    }
 
     public Long getId() {
         return id;
