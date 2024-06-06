@@ -1,21 +1,14 @@
-package unifacef.edu.netflix.model.entity;
+package unifacef.edu.netflix.model.dto;
 
-import jakarta.persistence.*;
+import unifacef.edu.netflix.model.entity.FilmeEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="diretor")
-public class DiretorEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DiretorDTO {
     private Long id;
-    @Column(name="nome")
     private String nome;
-    // composição, remoção em cascata, remove um diretor, remove seus filmes
-    @OneToMany(mappedBy = "diretor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FilmeEntity> filmes = new ArrayList<>();
+    private List<FilmeDTO> filmes = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -33,20 +26,21 @@ public class DiretorEntity {
         this.nome = nome;
     }
 
-    public List<FilmeEntity> getFilmes() {
+    public List<FilmeDTO> getFilmes() {
         return filmes;
     }
 
-    public void setFilmes(List<FilmeEntity> filmes) {
+    public void setFilmes(List<FilmeDTO> filmes) {
         this.filmes = filmes;
     }
 
     @Override
     public String toString() {
-        return "DiretorEntity{" +
+        return "DiretorDTO{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", filmes=" + filmes +
                 '}';
     }
 }
+

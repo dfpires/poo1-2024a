@@ -5,7 +5,7 @@ public class FilmeDTO {
     private String nome;
     private float nota;
     private int anoLancamento;
-
+    private DiretorDTO diretor;
 
     public Long getId() {
         return id;
@@ -39,7 +39,22 @@ public class FilmeDTO {
         this.anoLancamento = anoLancamento;
     }
 
-    // lição de casa
-    // crie um método que receba FilmeDTO e converta em FilmeEntity
-    // crie um método que receba FilmeEntity e converta em FilmeDTO
+    public DiretorDTO getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(DiretorDTO diretor) {
+        this.diretor = diretor;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmeDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", nota=" + nota +
+                ", anoLancamento=" + anoLancamento +
+                ", diretor=" + diretor +
+                '}';
+    }
 }

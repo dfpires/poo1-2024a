@@ -51,4 +51,23 @@ public class FilmeEntity {
     public void setAnoLancamento(int anoLancamento) {
         this.anoLancamento = anoLancamento;
     }
+
+    public DiretorEntity getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(DiretorEntity diretor) {
+        this.diretor = diretor;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmeEntity{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", nota=" + nota +
+                ", anoLancamento=" + anoLancamento +
+                ", diretor=" + diretor +
+                '}';
+    }
 }
